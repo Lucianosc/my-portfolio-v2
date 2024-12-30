@@ -2,34 +2,15 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Trophy } from "lucide-react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { ExternalLink, Trophy } from "lucide-react";
+import { ACHIEVEMENTS } from "@/constants/constants";
 
-const achievements = [
-  {
-    title: "First Place",
-    event: "Global AI Hackathon 2023",
-    description:
-      "Developed an AI-powered accessibility tool for visually impaired users.",
-  },
-  {
-    title: "Best UI/UX Design",
-    event: "Web3 Buildathon 2022",
-    description:
-      "Created a decentralized social media platform with innovative user interface.",
-  },
-  {
-    title: "Innovation Award",
-    event: "Sustainable Tech Hackathon 2021",
-    description: "Built an eco-friendly smart home energy management system.",
-  },
-  {
-    title: "People's Choice",
-    event: "HealthTech Challenge 2020",
-    description:
-      "Developed a telemedicine application for remote patient monitoring.",
-  },
-];
+const trophyColors = {
+  gold: "text-yellow-400",
+  silver: "text-gray-400",
+  bronze: "text-amber-700",
+};
 
 export function Achievements() {
   const [ref, inView] = useInView({
@@ -38,39 +19,72 @@ export function Achievements() {
   });
 
   return (
-    <section ref={ref} className="container mx-auto px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
-      >
-        <h2 className="text-4xl font-bold mb-8 text-center">Achievements</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {achievements.map((achievement, index) => (
-            <motion.div
-              key={achievement.title}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card>
-                <CardHeader className="flex flex-row items-center gap-4">
-                  <Trophy className="h-8 w-8 text-yellow-500" />
-                  <div>
-                    <CardTitle>{achievement.title}</CardTitle>
-                    <p className="text-sm text-muted-foreground">
-                      {achievement.event}
+    <section
+      ref={ref}
+      className="w-full min-h-screen flex items-center justify-center py-16 bg-background2"
+    >
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-4xl font-bold mb-6 text-center">Achievements</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {ACHIEVEMENTS.map((achievement, index) => (
+              <motion.div
+                key={achievement.title}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full">
+                  <CardHeader className="flex flex-row items-start gap-3 p-3">
+                    <Trophy
+                      className={`h-6 w-6 flex-shrink-0 mt-[2px] ${
+                        trophyColors[
+                          achievement.type as keyof typeof trophyColors
+                        ]
+                      }`}
+                    />
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-xs font-medium">
+                          {achievement.place}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          • {achievement.track}
+                        </span>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {achievement.event}
+                      </p>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-1.5 p-3 pt-0">
+                    <h3 className="text-base font-semibold leading-tight">
+                      {achievement.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground leading-normal">
+                      {achievement.description}
                     </p>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p>{achievement.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+                    {achievement.link && (
+                      <a
+                        href={achievement.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-primary/80 text-xs inline-flex gap-1"
+                      >
+                        View Project <ExternalLink className="h-4 w-4" />
+                      </a>
+                    )}
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }
