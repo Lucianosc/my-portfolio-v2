@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-montserrat font-medium tracking-[0.5px];
+  }
+
+  h1 {
+    @apply text-h1 md:text-h1-md font-normal;
+  }
+
+  h2 {
+    @apply text-h2 md:text-h2-md font-normal;
+  }
+
+  h3 {
+    @apply text-h3 md:text-h3-md font-normal;
+  }
+
+  p {
+    @apply font-hind text-base leading-6 tracking-[0.5px];
+  }
+}
