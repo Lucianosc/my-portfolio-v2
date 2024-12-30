@@ -44,10 +44,11 @@ export default function Home() {
   return (
     <>
       <NavIndicator activeIndex={activeSection} total={sections.length} />
-      <main className="flex min-h-screen flex-col items-center justify-between snap-y snap-mandatory text-white">
+      <main className="flex min-h-screen flex-col items-center justify-between text-white">
         {sections.map(({ Component, id }, index) => (
           <div
             key={id}
+            id={id}
             className={`w-full min-h-screen flex flex-col items-center justify-center ${
               index % 2 === 0 ? "bg-background" : "bg-background2"
             } snap-center`}
