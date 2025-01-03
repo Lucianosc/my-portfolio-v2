@@ -25,7 +25,7 @@ export function Skills() {
   });
 
   return (
-    <section ref={ref} className="container mx-auto px-4">
+    <section ref={ref} className="container py-4 px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}

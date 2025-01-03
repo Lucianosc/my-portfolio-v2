@@ -13,7 +13,7 @@ export function Hero() {
   };
 
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-center bg-background text-white">
+    <section className="w-full container bg-background text-white py-4">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

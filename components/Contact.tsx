@@ -17,9 +17,9 @@ export function Contact() {
     <>
       <section
         ref={ref}
-        className="py-20 w-full flex items-center justify-center flex-1"
+        className="py-4 w-full container flex justify-center items-center flex-1"
       >
-        <div className="container mx-auto px-4">
+        <div className="container px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}

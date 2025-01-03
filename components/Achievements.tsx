@@ -21,7 +21,7 @@ export function Achievements() {
   return (
     <section
       ref={ref}
-      className="w-full min-h-screen flex items-center justify-center py-16 bg-background2"
+      className="w-full container py-4 bg-background2"
     >
       <div className="container mx-auto px-4">
         <motion.div

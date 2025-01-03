@@ -10,7 +10,7 @@ export function About() {
   });
 
   return (
-    <section ref={ref} className="container mx-auto px-4">
+    <section ref={ref} className="container mx-auto px-4 py-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
