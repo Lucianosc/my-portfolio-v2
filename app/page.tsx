@@ -8,13 +8,12 @@ import { Hero } from "@/components/Hero";
 import { NavIndicator } from "@/components/NavIndicator";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useInView } from "react-intersection-observer";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
 
-  // Create refs for each section using useInView with a higher threshold
   const [heroRef, heroInView] = useInView({ threshold: 0.5 });
   const [aboutRef, aboutInView] = useInView({ threshold: 0.5 });
   const [skillsRef, skillsInView] = useInView({ threshold: 0.5 });
@@ -22,7 +21,6 @@ export default function Home() {
   const [projectsRef, projectsInView] = useInView({ threshold: 0.5 });
   const [contactRef, contactInView] = useInView({ threshold: 0.5 });
 
-  // Track sections and their inView states
   const sections = [
     { id: "hero", ref: heroRef, inView: heroInView },
     { id: "about", ref: aboutRef, inView: aboutInView },
@@ -32,16 +30,40 @@ export default function Home() {
     { id: "contact", ref: contactRef, inView: contactInView },
   ];
 
-  // Update active section based on which section is in view
+  const scrollToSection = useCallback((sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
+  // Handle URL hash changes
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1);
+      if (hash) {
+        scrollToSection(hash);
+      }
+    };
+
+    handleHashChange(); // Handle initial hash
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, [scrollToSection]);
+
+  // Update URL when section changes
   useEffect(() => {
     const visibleSections = sections.map((section, index) => ({
       index,
       inView: section.inView,
+      id: section.id,
     }));
 
     const currentlyVisible = visibleSections.find((section) => section.inView);
     if (currentlyVisible) {
       setActiveSection(currentlyVisible.index);
+      const newUrl = `${window.location.pathname}#${currentlyVisible.id}`;
+      window.history.replaceState(null, "", newUrl);
     }
   }, [
     heroInView,
@@ -50,6 +72,7 @@ export default function Home() {
     achievementsInView,
     projectsInView,
     contactInView,
+    sections,
   ]);
 
   const sectionComponents = [
