@@ -68,43 +68,48 @@ export const ACHIEVEMENTS = [
 
 export const PROJECTS = [
   {
+    id: "gardens",
     title: "Gardens",
     description:
       "Decentralized funding platform with innovative governance mechanisms powered by conviction voting. Built with Next.js and smart contracts.",
     image: "/placeholder.svg?height=200&width=300",
-    live: "https://www.gardens.fund/",
+    url: "https://www.gardens.fund/",
     tags: ["Web3", "DeFi", "DAO", "Smart Contracts", "Next.js"],
   },
   {
+    id: "el-eco",
     title: "El Eco",
     description:
       "Modern news media platform featuring real-time updates, responsive design, and seamless content management integration.",
     image: "/placeholder.svg?height=200&width=300",
-    live: "https://www.eleco.com.ar/",
+    url: "https://www.eleco.com.ar/",
     tags: ["Next.js", "CMS", "Media", "SEO", "Performance"],
   },
   {
+    id: "artic",
     title: "Artic",
     description:
       "Advanced content management system designed specifically for news organizations, optimizing editorial workflow and publishing.",
     image: "/placeholder.svg?height=200&width=300",
-    live: "https://artic.ar/",
+    url: "https://artic.ar/",
     tags: ["CMS", "TypeScript", "API", "Editorial", "Dashboard"],
   },
   {
+    id: "growpro",
     title: "GrowPro",
     description:
       "E-commerce platform for international education experiences, featuring personalized journey planning and booking system.",
     image: "/placeholder.svg?height=200&width=300",
-    live: "https://growproexperience.com/",
+    url: "https://growproexperience.com/",
     tags: ["E-commerce", "Next.js", "International", "Education", "UX"],
   },
   {
+    id: "equilibra",
     title: "Equilibra",
     description:
       "Web3 crowdfunding platform enabling transparent and decentralized fundraising with smart contract integration.",
     image: "/placeholder.svg?height=200&width=300",
-    live: "https://equilibra-front.vercel.app/",
+    url: "https://equilibra-front.vercel.app/",
     tags: ["Web3", "Crowdfunding", "DeFi", "React", "Blockchain"],
   },
 ];

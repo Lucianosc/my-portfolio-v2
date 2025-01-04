@@ -6,11 +6,11 @@ import { useInView } from "react-intersection-observer";
 export function About() {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.3,
+    threshold: 0.2,
   });
 
   return (
-    <section ref={ref} className="container mx-auto px-4 py-4">
+    <section ref={ref} className="container p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}

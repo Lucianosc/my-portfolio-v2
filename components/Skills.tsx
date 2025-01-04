@@ -21,11 +21,11 @@ const skills = [
 export function Skills() {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.2,
   });
 
   return (
-    <section ref={ref} className="container py-4 px-4">
+    <section ref={ref} className="container p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -40,7 +40,7 @@ export function Skills() {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Badge variant="outline" className="text-lg py-2 px-4">
+              <Badge variant="outline" className="text-lg py-2 px-4 bg-background2">
                 {skill}
               </Badge>
             </motion.div>

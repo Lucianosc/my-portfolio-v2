@@ -10,16 +10,16 @@ import { Footer } from "./Footer";
 export function Contact() {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.2,
   });
 
   return (
     <>
       <section
         ref={ref}
-        className="py-4 w-full container flex justify-center items-center flex-1"
+        className="p-4 w-full container flex justify-center items-center flex-1"
       >
-        <div className="container px-4">
+        <div className="container p-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
