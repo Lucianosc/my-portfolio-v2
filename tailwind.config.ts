@@ -17,6 +17,9 @@ export default {
       },
     },
     extend: {
+      screens: {
+        "bp820": "820px",
+      },
       colors: {
         // Base colors
         primary: "#04d9ff",
