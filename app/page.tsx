@@ -1,105 +1,172 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
+import { useEffect, useCallback, useMemo } from "react";
+import { useInView } from "react-intersection-observer";
+import { NavIndicator } from "@/components/NavIndicator";
+import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Achievements } from "@/components/Achievements";
-import { Contact } from "@/components/Contact";
-import { Hero } from "@/components/Hero";
-import { NavIndicator } from "@/components/NavIndicator";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
-import { useState, useEffect, useCallback } from "react";
-import { useInView } from "react-intersection-observer";
+import { Contact } from "@/components/Contact";
+
+const SECTION_COMPONENTS = {
+  hero: Hero,
+  about: About,
+  skills: Skills,
+  projects: Projects,
+  achievements: Achievements,
+  contact: Contact,
+} as const;
+
+type SectionId = keyof typeof SECTION_COMPONENTS;
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState(0);
+  // Create refs for each section with the intersection observer
+  const [heroRef, heroInView, heroEntry] = useInView({
+    threshold: [0, 0.25, 0.5, 0.75, 1],
+    rootMargin: "-1px 0px -1px 0px",
+  });
+  const [aboutRef, aboutInView, aboutEntry] = useInView({
+    threshold: [0, 0.25, 0.5, 0.75, 1],
+    rootMargin: "-1px 0px -1px 0px",
+  });
+  const [skillsRef, skillsInView, skillsEntry] = useInView({
+    threshold: [0, 0.25, 0.5, 0.75, 1],
+    rootMargin: "-1px 0px -1px 0px",
+  });
+  const [projectsRef, projectsInView, projectsEntry] = useInView({
+    threshold: [0, 0.25, 0.5, 0.75, 1],
+    rootMargin: "-1px 0px -1px 0px",
+  });
+  const [achievementsRef, achievementsInView, achievementsEntry] = useInView({
+    threshold: [0, 0.25, 0.5, 0.75, 1],
+    rootMargin: "-1px 0px -1px 0px",
+  });
+  const [contactRef, contactInView, contactEntry] = useInView({
+    threshold: [0, 0.25, 0.5, 0.75, 1],
+    rootMargin: "-1px 0px -1px 0px",
+  });
 
-  const [heroRef, heroInView] = useInView({ threshold: 0.5 });
-  const [aboutRef, aboutInView] = useInView({ threshold: 0.5 });
-  const [skillsRef, skillsInView] = useInView({ threshold: 0.5 });
-  const [achievementsRef, achievementsInView] = useInView({ threshold: 0.5 });
-  const [projectsRef, projectsInView] = useInView({ threshold: 0.5 });
-  const [contactRef, contactInView] = useInView({ threshold: 0.5 });
-
-  const sections = [
-    { id: "hero", ref: heroRef, inView: heroInView },
-    { id: "about", ref: aboutRef, inView: aboutInView },
-    { id: "skills", ref: skillsRef, inView: skillsInView },
-    { id: "achievements", ref: achievementsRef, inView: achievementsInView },
-    { id: "projects", ref: projectsRef, inView: projectsInView },
-    { id: "contact", ref: contactRef, inView: contactInView },
-  ];
+  // Create an array of section data
+  const sections = useMemo(
+    () => [
+      {
+        id: "hero" as SectionId,
+        ref: heroRef,
+        inView: heroInView,
+        intersectionRatio: heroEntry?.intersectionRatio || 0,
+      },
+      {
+        id: "about" as SectionId,
+        ref: aboutRef,
+        inView: aboutInView,
+        intersectionRatio: aboutEntry?.intersectionRatio || 0,
+      },
+      {
+        id: "skills" as SectionId,
+        ref: skillsRef,
+        inView: skillsInView,
+        intersectionRatio: skillsEntry?.intersectionRatio || 0,
+      },
+      {
+        id: "projects" as SectionId,
+        ref: projectsRef,
+        inView: projectsInView,
+        intersectionRatio: projectsEntry?.intersectionRatio || 0,
+      },
+      {
+        id: "achievements" as SectionId,
+        ref: achievementsRef,
+        inView: achievementsInView,
+        intersectionRatio: achievementsEntry?.intersectionRatio || 0,
+      },
+      {
+        id: "contact" as SectionId,
+        ref: contactRef,
+        inView: contactInView,
+        intersectionRatio: contactEntry?.intersectionRatio || 0,
+      },
+    ],
+    [
+      heroRef,
+      heroInView,
+      heroEntry,
+      aboutRef,
+      aboutInView,
+      aboutEntry,
+      skillsRef,
+      skillsInView,
+      skillsEntry,
+      projectsRef,
+      projectsInView,
+      projectsEntry,
+      achievementsRef,
+      achievementsInView,
+      achievementsEntry,
+      contactRef,
+      contactInView,
+      contactEntry,
+    ]
+  );
 
   const scrollToSection = useCallback((sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
   // Handle URL hash changes
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
-      if (hash) {
-        scrollToSection(hash);
-      }
+      if (hash) scrollToSection(hash);
     };
 
-    handleHashChange(); // Handle initial hash
+    handleHashChange();
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, [scrollToSection]);
 
-  // Update URL when section changes
-  useEffect(() => {
-    const visibleSections = sections.map((section, index) => ({
-      index,
-      inView: section.inView,
-      id: section.id,
-    }));
+  // Find the section with the largest intersection ratio
+  const activeSection = useMemo(() => {
+    return sections.reduce(
+      (prev, current) =>
+        current.intersectionRatio > prev.intersectionRatio ? current : prev,
+      sections[0]
+    );
+  }, [sections]);
 
-    const currentlyVisible = visibleSections.find((section) => section.inView);
-    if (currentlyVisible) {
-      setActiveSection(currentlyVisible.index);
-      const newUrl = `${window.location.pathname}#${currentlyVisible.id}`;
+  // Update URL when active section changes
+  useEffect(() => {
+    if (activeSection) {
+      const newUrl = `${window.location.pathname}#${activeSection.id}`;
       window.history.replaceState(null, "", newUrl);
     }
-  }, [
-    heroInView,
-    aboutInView,
-    skillsInView,
-    achievementsInView,
-    projectsInView,
-    contactInView,
-    sections,
-  ]);
-
-  const sectionComponents = [
-    { Component: Hero, id: "hero", ref: heroRef },
-    { Component: About, id: "about", ref: aboutRef },
-    { Component: Skills, id: "skills", ref: skillsRef },
-    { Component: Achievements, id: "achievements", ref: achievementsRef },
-    { Component: Projects, id: "projects", ref: projectsRef },
-    { Component: Contact, id: "contact", ref: contactRef },
-  ];
+  }, [activeSection]);
 
   return (
     <>
-      <NavIndicator activeIndex={activeSection} total={sections.length} />
+      <NavIndicator
+        activeIndex={sections.findIndex(
+          (section) => section.id === activeSection.id
+        )}
+        total={sections.length}
+      />
       <main className="flex min-h-screen flex-col items-center justify-between text-white">
-        {sectionComponents.map(({ Component, id, ref }, index) => (
-          <div
-            key={id}
-            ref={ref}
-            id={id}
-            className={`w-full min-h-screen flex flex-col items-center justify-center ${
-              index % 2 === 0 ? "bg-background" : "bg-background2"
-            } snap-center`}
-          >
-            <Component />
-          </div>
-        ))}
+        {sections.map(({ id, ref }, index) => {
+          const Component = SECTION_COMPONENTS[id];
+          return (
+            <div
+              key={id}
+              ref={ref}
+              id={id}
+              className={`w-full min-h-screen flex flex-col items-center justify-center ${
+                index % 2 === 0 ? "bg-background" : "bg-background2"
+              } snap-center`}
+            >
+              <Component />
+            </div>
+          );
+        })}
       </main>
     </>
   );

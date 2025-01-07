@@ -10,27 +10,24 @@ export function NavIndicator({
   activeIndex: number;
   total: number;
 }) {
-  const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const { scrollY } = useScroll();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-  const debounce = (func: Function, wait: number) => {
+  const debounce = <T extends (...args: unknown[]) => void>(
+    func: T,
+    wait: number
+  ) => {
     let timeout: NodeJS.Timeout;
-    return (...args: unknown[]) => {
+    return (...args: Parameters<T>) => {
       clearTimeout(timeout);
       timeout = setTimeout(() => func(...args), wait);
     };
   };
 
-  const hideIndicator = useCallback(
-    debounce(() => setIsVisible(false), 1500),
-    []
-  );
+  const hideIndicator = useCallback(() => {
+    const hide = debounce(() => setIsVisible(false), 1500);
+    hide();
+  }, []);
 
   const showIndicator = useCallback(() => {
     setIsVisible(true);
@@ -38,13 +35,9 @@ export function NavIndicator({
   }, [hideIndicator]);
 
   useEffect(() => {
-    if (!mounted) return;
-
     const unsubscribe = scrollY.on("change", showIndicator);
     return () => unsubscribe();
-  }, [scrollY, showIndicator, mounted]);
-
-  if (!mounted) return null;
+  }, [scrollY, showIndicator]);
 
   return (
     <motion.div
