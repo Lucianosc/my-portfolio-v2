@@ -29,7 +29,9 @@ export function ShownItem({
   });
 
   // Only lock scroll when not dragging
-  useScrollLock({ enabled: !isDragging });
+  useScrollLock({
+    enabled: !isDragging,
+  });
 
   return (
     <>
@@ -37,10 +39,9 @@ export function ShownItem({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/80 z-10 overscroll-none"
+        className="fixed inset-0 bg-black/80 z-10 items-center justify-center top-0 w-full h-full flex"
         onClick={onClose}
-      />
-      <div className="fixed inset-0 items-center justify-center top-0 z-20 w-full h-full flex">
+      >
         <div className="relative py-10 w-full p-4">
           <motion.div
             className="relative rounded-2xl bg-background2 overflow-hidden max-w-[820px] mx-auto h-full"
@@ -79,7 +80,7 @@ export function ShownItem({
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }
