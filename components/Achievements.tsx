@@ -34,7 +34,7 @@ export function Achievements() {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full bg-background">
+              <Card className="h-full bg-background2">
                 <CardHeader className="flex flex-row items-start gap-3 p-3">
                   <Trophy
                     className={`h-6 w-6 flex-shrink-0 mt-[2px] ${
