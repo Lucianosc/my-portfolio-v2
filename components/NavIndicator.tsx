@@ -3,6 +3,23 @@
 import { motion, useScroll } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 
+function debounce<T extends (...args: unknown[]) => unknown>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
+  let timeout: NodeJS.Timeout | undefined;
+
+  return function executedFunction(...args: Parameters<T>) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 export function NavIndicator({
   activeIndex,
   total,
@@ -12,22 +29,13 @@ export function NavIndicator({
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const { scrollY } = useScroll();
+  console.log(isVisible);
 
-  const debounce = <T extends (...args: unknown[]) => void>(
-    func: T,
-    wait: number
-  ) => {
-    let timeout: NodeJS.Timeout;
-    return (...args: Parameters<T>) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func(...args), wait);
-    };
-  };
-
-  const hideIndicator = useCallback(() => {
-    const hide = debounce(() => setIsVisible(false), 1500);
-    hide();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const hideIndicator = useCallback(
+    debounce(() => setIsVisible(false), 1500),
+    []
+  );
 
   const showIndicator = useCallback(() => {
     setIsVisible(true);
