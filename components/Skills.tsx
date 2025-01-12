@@ -9,52 +9,52 @@ const PHI = 1.618033988749895;
 
 // Skill configurations with URLs
 const skills = [
-  { name: "Next.js", logo: "/assets/next-logo.svg", url: "https://nextjs.org" },
-  { name: "React", logo: "/assets/react-logo.svg", url: "https://reactjs.org" },
+  { name: "Next.js", logo: "/logos/next-logo.svg", url: "https://nextjs.org" },
+  { name: "React", logo: "/logos/react-logo.svg", url: "https://reactjs.org" },
   {
     name: "TypeScript",
-    logo: "/assets/typescript-logo.svg",
+    logo: "/logos/typescript-logo.svg",
     url: "https://www.typescriptlang.org",
   },
   {
     name: "JavaScript",
-    logo: "/assets/javascript-logo.svg",
+    logo: "/logos/javascript-logo.svg",
     url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   },
   {
     name: "Tailwind CSS",
-    logo: "/assets/tailwind-logo.svg",
+    logo: "/logos/tailwind-logo.svg",
     url: "https://tailwindcss.com",
   },
   {
     name: "Solidity",
-    logo: "/assets/solidity-logo.svg",
+    logo: "/logos/solidity-logo.svg",
     url: "https://soliditylang.org",
   },
   {
     name: "Viem",
-    logo: "/assets/viem-logo.svg",
+    logo: "/logos/viem-logo.svg",
     url: "https://viem.sh",
     size: "w-20",
   },
   {
     name: "Wagmi",
-    logo: "/assets/wagmi-logo.svg",
+    logo: "/logos/wagmi-logo.svg",
     url: "https://wagmi.sh",
     size: "w-32",
   },
-  { name: "Git", logo: "/assets/git-logo.svg", url: "https://git-scm.com" },
+  { name: "Git", logo: "/logos/git-logo.svg", url: "https://git-scm.com" },
   {
     name: "GraphQL",
-    logo: "/assets/graphql-logo.svg",
+    logo: "/logos/graphql-logo.svg",
     url: "https://graphql.org",
   },
   {
     name: "Vitest",
-    logo: "/assets/vitest-logo.svg",
+    logo: "/logos/vitest-logo.svg",
     url: "https://vitest.dev/",
   },
-  { name: "Jest", logo: "/assets/jest-logo.svg", url: "https://jestjs.io" },
+  { name: "Jest", logo: "/logos/jest-logo.svg", url: "https://jestjs.io" },
 ];
 
 const getSpiralPosition = (index: number) => {
