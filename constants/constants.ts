@@ -72,7 +72,7 @@ export const PROJECTS = [
     title: "Gardens",
     description:
       "Decentralized funding allocation platform with innovative governance mechanisms powered by Conviction Voting.",
-    imageUri: "/images/gardens.png",
+    imageUri: "/project-images/gardens.png",
     url: "https://www.gardens.fund/",
     tags: ["Web3", "DeFi", "DAO", "Smart Contracts", "Next.js"],
   },
@@ -81,7 +81,7 @@ export const PROJECTS = [
     title: "El Eco",
     description:
       "Modern news media platform featuring real-time updates, responsive design, and seamless content and ads management integration.",
-    imageUri: "/images/el-eco.png",
+    imageUri: "/project-images/el-eco.png",
     url: "https://www.eleco.com.ar/",
     tags: ["Next.js", "CMS", "Media", "SEO", "Performance"],
   },
@@ -90,7 +90,7 @@ export const PROJECTS = [
     title: "Artic",
     description:
       "Advanced content management system designed specifically for news organizations, optimizing editorial workflow and publishing.",
-    imageUri: "/images/artic.png",
+    imageUri: "/project-images/artic.png",
     url: "https://artic.ar/",
     tags: ["CMS", "TypeScript", "API", "Editorial", "Dashboard"],
   },
@@ -99,7 +99,7 @@ export const PROJECTS = [
     title: "GrowPro",
     description:
       "E-commerce platform for international education experiences, featuring personalized journey planning and booking system.",
-    imageUri: "/images/growpro.png",
+    imageUri: "/project-images/growpro.png",
     url: "https://growproexperience.com/",
     tags: ["E-commerce", "Next.js", "International", "Education", "UX"],
   },
@@ -108,7 +108,7 @@ export const PROJECTS = [
     title: "Equilibra",
     description:
       "Web3 crowdfunding platform enabling transparent and decentralized fundraising within Ethereum network.",
-    imageUri: "/images/equilibra.png",
+    imageUri: "/project-images/equilibra.png",
     url: "https://equilibra-front.vercel.app/",
     tags: ["Web3", "Crowdfunding", "DeFi", "React", "Blockchain"],
   },

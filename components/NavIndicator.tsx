@@ -29,7 +29,6 @@ export function NavIndicator({
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const { scrollY } = useScroll();
-  console.log(isVisible);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const hideIndicator = useCallback(

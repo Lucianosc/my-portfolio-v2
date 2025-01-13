@@ -9,52 +9,52 @@ const PHI = 1.618033988749895;
 
 // Skill configurations with URLs
 const skills = [
-  { name: "Next.js", logo: "/logos/next-logo.svg", url: "https://nextjs.org" },
-  { name: "React", logo: "/logos/react-logo.svg", url: "https://reactjs.org" },
+  { name: "Next.js", logo: "/tech-logos/next-logo.svg", url: "https://nextjs.org" },
+  { name: "React", logo: "/tech-logos/react-logo.svg", url: "https://reactjs.org" },
   {
     name: "TypeScript",
-    logo: "/logos/typescript-logo.svg",
+    logo: "/tech-logos/typescript-logo.svg",
     url: "https://www.typescriptlang.org",
   },
   {
     name: "JavaScript",
-    logo: "/logos/javascript-logo.svg",
+    logo: "/tech-logos/javascript-logo.svg",
     url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   },
   {
     name: "Tailwind CSS",
-    logo: "/logos/tailwind-logo.svg",
+    logo: "/tech-logos/tailwind-logo.svg",
     url: "https://tailwindcss.com",
   },
   {
     name: "Solidity",
-    logo: "/logos/solidity-logo.svg",
+    logo: "/tech-logos/solidity-logo.svg",
     url: "https://soliditylang.org",
   },
   {
     name: "Viem",
-    logo: "/logos/viem-logo.svg",
+    logo: "/tech-logos/viem-logo.svg",
     url: "https://viem.sh",
     size: "w-20",
   },
   {
     name: "Wagmi",
-    logo: "/logos/wagmi-logo.svg",
+    logo: "/tech-logos/wagmi-logo.svg",
     url: "https://wagmi.sh",
     size: "w-32",
   },
-  { name: "Git", logo: "/logos/git-logo.svg", url: "https://git-scm.com" },
+  { name: "Git", logo: "/tech-logos/git-logo.svg", url: "https://git-scm.com" },
   {
     name: "GraphQL",
-    logo: "/logos/graphql-logo.svg",
+    logo: "/tech-logos/graphql-logo.svg",
     url: "https://graphql.org",
   },
   {
     name: "Vitest",
-    logo: "/logos/vitest-logo.svg",
+    logo: "/tech-logos/vitest-logo.svg",
     url: "https://vitest.dev/",
   },
-  { name: "Jest", logo: "/logos/jest-logo.svg", url: "https://jestjs.io" },
+  { name: "Jest", logo: "/tech-logos/jest-logo.svg", url: "https://jestjs.io" },
 ];
 
 const getSpiralPosition = (index: number) => {
