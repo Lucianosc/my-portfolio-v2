@@ -18,7 +18,7 @@ export default {
     },
     extend: {
       screens: {
-        "bp820": "820px",
+        bp820: "820px",
       },
       colors: {
         // Base colors
@@ -63,8 +63,22 @@ export default {
         sm: "calc(0.5rem - 4px)",
       },
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
-        hind: ["Hind", "sans-serif"],
+        sans: [
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "Noto Sans",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji",
+        ],
       },
       fontSize: {
         h1: ["2.5rem", { lineHeight: "1.2", letterSpacing: "0.5px" }],
