@@ -1,18 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Hind } from "next/font/google";
 import "@/styles/globals.css";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-montserrat",
-});
-
-const hind = Hind({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-hind",
-});
 
 export const metadata: Metadata = {
   title: "Luciano Frontend Developer",
@@ -28,9 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className={`${montserrat.variable} ${hind.variable} antialiased`}>
-        {children}
-      </body>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }
