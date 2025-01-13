@@ -13,7 +13,7 @@
   }
   
   body {
-    @apply bg-background text-foreground font-montserrat font-medium tracking-[0.5px];
+    @apply bg-background text-foreground font-medium tracking-[0.5px];
   }
 
   h1 {
@@ -29,6 +29,6 @@
   }
 
   p {
-    @apply font-hind text-base leading-6 tracking-[0.5px];
+    @apply text-base leading-6 tracking-[0.5px];
   }
 }
