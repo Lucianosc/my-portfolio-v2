@@ -1,16 +1,26 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { debounce } from "@/utils/functions";
 
 // Golden ratio constant
 const PHI = 1.618033988749895;
 
 // Skill configurations with URLs
 const skills = [
-  { name: "Next.js", logo: "/tech-logos/next-logo.svg", url: "https://nextjs.org" },
-  { name: "React", logo: "/tech-logos/react-logo.svg", url: "https://reactjs.org" },
+  {
+    name: "Next.js",
+    logo: "/tech-logos/next-logo.svg",
+    url: "https://nextjs.org",
+  },
+  {
+    name: "React",
+    logo: "/tech-logos/react-logo.svg",
+    url: "https://reactjs.org",
+  },
   {
     name: "TypeScript",
     logo: "/tech-logos/typescript-logo.svg",
@@ -84,6 +94,38 @@ const getFloatingAnimation = (index: number) => {
   };
 };
 
+export function Skills() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  return (
+    <section ref={ref} className="container px-4 py-8 h-screen overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8 }}
+        className="flex flex-col justify-center items-center h-full"
+      >
+        <h2 className="text-4xl font-bold mb-8 text-center">Skills</h2>
+        <div className="relative w-full max-w-4xl h-full flex-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 p-6 sm:p-4 md:p-2 lg:p-0">
+          {skills.map((skill, index) => (
+            <SkillBadge
+              key={skill.name}
+              {...skill}
+              index={index}
+              inView={inView}
+            />
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+export default Skills;
+
 const SkillBadge = ({
   name,
   logo,
@@ -104,8 +146,10 @@ const SkillBadge = ({
   const floatingAnim = getFloatingAnimation(index);
 
   // Adjust positions for specific skills
-  if (name === "JavaScript") spiralPos = { ...spiralPos, y: spiralPos.y + 90, x: spiralPos.x + 30 };
-  if (name === "Git") spiralPos = { ...spiralPos, y: spiralPos.y + 20, x: spiralPos.x + 30 };
+  if (name === "JavaScript")
+    spiralPos = { ...spiralPos, y: spiralPos.y + 90, x: spiralPos.x + 30 };
+  if (name === "Git")
+    spiralPos = { ...spiralPos, y: spiralPos.y + 20, x: spiralPos.x + 30 };
   if (name === "Viem") spiralPos.x = spiralPos.x + 40;
   if (name === "Solidity") spiralPos.y = spiralPos.y - 60;
   if (name === "Wagmi") spiralPos.x = spiralPos.x - 40;
@@ -171,7 +215,7 @@ const SkillBadge = ({
       <motion.div
         animate={controls}
         onHoverStart={() => controls.stop()}
-        onHoverEnd={startAnimation}
+        onHoverEnd={debounce(startAnimation)}
       >
         <a
           href={url}
@@ -183,7 +227,7 @@ const SkillBadge = ({
             className="text-lg py-2 px-4 bg-background2 whitespace-nowrap cursor-pointer 
             scale-100 sm:scale-110 md:scale-115 lg:scale-125 
             hover:scale-125 sm:hover:scale-135 md:hover:scale-140 lg:hover:scale-150 
-            transition-all duration-700 flex items-center gap-2 hover:bg-background2 ease-in-out"
+            transition-all duration-300 flex items-center gap-2 hover:bg-background2 ease-in-out"
           >
             <div
               className={`${
@@ -204,35 +248,3 @@ const SkillBadge = ({
     </motion.div>
   );
 };
-
-export function Skills() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
-
-  return (
-    <section ref={ref} className="container px-4 py-8 h-screen overflow-hidden">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
-        className="flex flex-col justify-center items-center h-full"
-      >
-        <h2 className="text-4xl font-bold mb-8 text-center">Skills</h2>
-        <div className="relative w-full max-w-4xl h-full flex-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 p-6 sm:p-4 md:p-2 lg:p-0">
-          {skills.map((skill, index) => (
-            <SkillBadge
-              key={skill.name}
-              {...skill}
-              index={index}
-              inView={inView}
-            />
-          ))}
-        </div>
-      </motion.div>
-    </section>
-  );
-}
-
-export default Skills;

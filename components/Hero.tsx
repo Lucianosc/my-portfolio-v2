@@ -17,7 +17,7 @@ type SplashImageProps = SplashPosition & {
 
 const SPLASH_POSITIONS: SplashPosition[] = [
   { translateX: "-25%", translateY: "30%", depth: 0.4 }, // #04d9ff
-  { translateX: "-3%", translateY: "25%", depth: 0.8 }, // #FF8A1A
+  { translateX: "-3%", translateY: "30%", depth: 0.8 }, // #FF8A1A
   { translateX: "25%", translateY: "-5%", depth: 0.7 }, // #2343AD
   { translateX: "25%", translateY: "10%", depth: 0.6 }, // #14C13A
   { translateX: "-25%", translateY: "0", depth: 0.5 }, // #8018A9
