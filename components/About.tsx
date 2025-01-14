@@ -21,7 +21,7 @@ export function About() {
           className="flex flex-end max-w-sm sm:max-w-lg min-w-[296px] mb-4"
         >
           <Image
-            src={"/Capybara2.png"}
+            src={"/Capybara.png"}
             alt={"Logo image"}
             width={500}
             height={500}
