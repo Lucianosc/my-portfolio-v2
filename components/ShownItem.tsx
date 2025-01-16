@@ -66,16 +66,18 @@ export function ShownItem({
               className="relative p-4 sm:p-8 max-w-[820px] flex flex-col gap-4 z-55"
               animate
             >
-              <h2 className="text-white mb-2">{title}</h2>
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 flex items-center gap-2 w-fit"
-              >
-                <ExternalLink className="h-4 w-4" />
-                View Live Project
-              </a>
+              <div className="flex w-full justify-between">
+                <h2 className="text-white mb-2">{title}</h2>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary/80 flex items-center gap-2 w-fit"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  View Project
+                </a>
+              </div>
               <p className="text-muted-foreground text-lg">{description}</p>
             </motion.div>
           </motion.div>
