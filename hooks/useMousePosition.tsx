@@ -1,12 +1,12 @@
 import { useState, useEffect, RefObject } from "react";
 
 interface MousePosition {
-  x: number;
-  y: number;
-  elementX: number;
-  elementY: number;
-  normalizedX: number;
-  normalizedY: number;
+  x?: number;
+  y?: number;
+  elementX?: number;
+  elementY?: number;
+  normalizedX?: number;
+  normalizedY?: number;
   isInside: boolean;
 }
 
@@ -14,12 +14,12 @@ export function useMousePosition(
   elementRef: RefObject<HTMLElement | null>
 ): MousePosition {
   const [mousePosition, setMousePosition] = useState<MousePosition>({
-    x: 0,
-    y: 0,
-    elementX: 0,
-    elementY: 0,
-    normalizedX: 0,
-    normalizedY: 0,
+    x: undefined,
+    y: undefined,
+    elementX: undefined,
+    elementY: undefined,
+    normalizedX: undefined,
+    normalizedY: undefined,
     isInside: false,
   });
 
@@ -53,10 +53,10 @@ export function useMousePosition(
       setMousePosition({
         x: clientX,
         y: clientY,
-        elementX: isInside ? elementX : 0,
-        elementY: isInside ? elementY : 0,
-        normalizedX: isInside ? elementX / rect.width : 0,
-        normalizedY: isInside ? elementY / rect.height : 0,
+        elementX: isInside ? elementX : undefined,
+        elementY: isInside ? elementY : undefined,
+        normalizedX: isInside ? elementX / rect.width : undefined,
+        normalizedY: isInside ? elementY / rect.height : undefined,
         isInside,
       });
     };
@@ -70,4 +70,3 @@ export function useMousePosition(
 
   return mousePosition;
 }
-

@@ -1,5 +1,6 @@
 import { useMousePosition } from "@/hooks/useMousePosition";
 import { motion, useSpring, useTransform } from "framer-motion";
+// import { Code2 } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -10,8 +11,8 @@ interface SplashPosition {
 }
 
 type SplashImageProps = SplashPosition & {
-  normalizedX: number;
-  normalizedY: number;
+  normalizedX?: number;
+  normalizedY?: number;
   index: number;
 };
 
@@ -39,7 +40,6 @@ function addToPercentage(percentStr: string, value: number): string {
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const { normalizedX, normalizedY } = useMousePosition(sectionRef);
-
   return (
     <section
       ref={sectionRef}
@@ -77,8 +77,8 @@ export function Hero() {
 const transform = (x: number) => x * 2 - 1;
 
 function SplashImage({
-  normalizedX,
-  normalizedY,
+  normalizedX = 0.5,
+  normalizedY = 0.5,
   depth = 0.5,
   translateX,
   translateY,
@@ -100,10 +100,12 @@ function SplashImage({
   const y = useTransform(springY, (latest) =>
     addToPercentage(translateY, latest)
   );
-
   return (
     <motion.div
-      initial={{ scale: 0, opacity: 1 }}
+      initial={{
+        scale: 0,
+        opacity: 1,
+      }}
       animate={{
         scale: 1,
         opacity: 1,
@@ -124,6 +126,9 @@ function SplashImage({
           className="object-contain"
           priority
         />
+        {/* {index === 1 && (
+          <Code2 className="top-[45%] left-[53%] absolute w-10 h-10 animate-pulse duration-1500 text-background" />
+        )} */}
       </motion.div>
     </motion.div>
   );
