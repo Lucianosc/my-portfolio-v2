@@ -37,7 +37,7 @@ function ProjectCard({
           layoutId={`card-container-${id}`}
         >
           <motion.div
-            className="relative top-0 left-0 overflow-hidden h-64 sm:h-80 md:h-96 w-screen bp820:w-[820px]"
+            className="relative top-0 left-0 overflow-hidden h-64 sm:h-80 md:h-96 w-screen bp820:w-[820px] cursor-pointer"
             layoutId={`card-image-container-${id}`}
           >
             <Image

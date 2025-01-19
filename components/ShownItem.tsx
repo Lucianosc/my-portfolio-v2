@@ -33,8 +33,21 @@ export function ShownItem({
     enabled: !isDragging,
   });
 
+  // const [showCustomCursor, setShowCustomCursor] = useState(false);
+  // const [initialMousePos, setInitialMousePos] = useState({ x: 0, y: 0 });
+
+  // const handleMouseEnter = (e: React.MouseEvent) => {
+  //   setInitialMousePos({ x: e.clientX, y: e.clientY });
+  //   setShowCustomCursor(true);
+  // };
+
   return (
     <>
+      {/* {showCustomCursor && (
+        <CustomCursor initialPosition={initialMousePos}>
+          See Project
+        </CustomCursor>
+      )} */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -48,10 +61,13 @@ export function ShownItem({
             layoutId={`card-container-${id}`}
             {...dragProps}
             {...dragHandlers}
+            onClick={(e) => e.stopPropagation()}
           >
             <motion.div
               className="relative top-0 left-0 overflow-hidden h-64 sm:h-80 md:h-96 w-screen bp820:w-[820px] z-60"
               layoutId={`card-image-container-${id}`}
+              // onMouseEnter={handleMouseEnter}
+              // onMouseLeave={() => setShowCustomCursor(false)}
             >
               <Image
                 src={imageUri}
@@ -74,8 +90,8 @@ export function ShownItem({
                   rel="noopener noreferrer"
                   className="text-primary hover:text-primary/80 flex items-center gap-2 w-fit"
                 >
-                  <ExternalLink className="h-4 w-4" />
                   View Project
+                  <ExternalLink className="h-4 w-4" />
                 </a>
               </div>
               <p className="text-muted-foreground text-lg">{description}</p>
