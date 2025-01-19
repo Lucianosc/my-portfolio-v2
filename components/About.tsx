@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
@@ -13,12 +11,12 @@ export function About() {
   return (
     <section ref={ref} className="container p-4 flex flex-col gap-4">
       <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
-      <div className="flex flex-col gap-4 justify-center items-center sm:flex-row">
+      <div className="flex flex-col gap-8 justify-center items-center sm:flex-row">
         <motion.div
           initial={{ opacity: 0, y: -40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="flex flex-end max-w-sm sm:max-w-lg min-w-[296px] mb-4"
+          className="flex flex-end max-w-sm sm:max-w-lg min-w-[296px]"
         >
           <Image
             src={"/Capybara.png"}
@@ -27,29 +25,38 @@ export function About() {
             height={500}
           />
         </motion.div>
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-6 max-w-sm sm:max-w-lg">
           <motion.div
-            initial={{ opacity: 0, x: 1000 }}
+            initial={{ opacity: 0, x: 100 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.3, ease: "easeOut", delay: 0.5 }}
-            className="text-start max-w-sm sm:max-w-lg min-w-[296px] flex flex-col justify-center"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="group relative bg-white/10 text-white p-4 rounded-3xl rounded-bl-none"
           >
-            <p className="text-2xl mb-4">Hi! I&apos;m Luciano Scaminaci.</p>
-            <p className="text-xl mb-8">
+            <p className="text-xl">
               I was born in the middle of the Sierras in Tandil, Argentina.
             </p>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: 1000 }}
+            initial={{ opacity: 0, x: 100 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.3, ease: "easeOut", delay: 0.5 }}
-            className="text-start max-w-sm sm:max-w-lg min-w-[296px] flex flex-col justify-center"
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="group relative bg-white/10 text-white p-4 rounded-3xl rounded-bl-none"
           >
-            <p className="text-2xl mb-4">Crafting intuitive Web interfaces.</p>
-            <p className="text-xl mb-8">
-              With a passion for nature, I love to bring organic and
-              <span className="text-primary"> usability-focused</span> solutions
-              for enhanced user experience.
+            <p className="text-xl">
+              I&apos;m passionate about nature and love to bring organic,
+              <span className="text-primary"> usability-focused</span>{" "}
+              solutions.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 1 }}
+            className="group relative bg-white/10 text-white p-4 rounded-3xl rounded-bl-none"
+          >
+            <p className="text-xl">
+              I try to make things easy, always keeping an eye on{" "}
+              <span className="text-primary">user experience</span>.
             </p>
           </motion.div>
         </div>
@@ -57,3 +64,5 @@ export function About() {
     </section>
   );
 }
+
+export default About;
