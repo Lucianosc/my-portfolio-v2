@@ -7,6 +7,7 @@ export const ACHIEVEMENTS = [
     description: "Cross-chain swap leveraging CCTP.",
     link: "https://ethglobal.com/showcase/aruswap-ebpfr",
     type: "silver",
+    logo: "/achievements-logos/Aruswap-logo.png",
   },
   {
     title: "PopUp Pass",
@@ -16,6 +17,7 @@ export const ACHIEVEMENTS = [
     description: "On-chain identity verification with token-bound accounts.",
     link: "https://dorahacks.io/buidl/18507",
     type: "bronze",
+    logo: "/achievements-logos/PopUpPass-logo.webp",
   },
   {
     title: "Meme Arena",
@@ -25,6 +27,7 @@ export const ACHIEVEMENTS = [
     description: "Web3 game featuring memecoins with Pokémon-style battles.",
     link: "https://dorahacks.io/buidl/15201/",
     type: "silver",
+    logo: "/achievements-logos/MemeArena-logo.webp",
   },
   {
     title: "Enigma Vote",
@@ -34,6 +37,7 @@ export const ACHIEVEMENTS = [
     description: "Decentralized anonymous voting platform.",
     link: "https://taikai.network/ethargentina/hackathons/level-up-argentina-2024/projects/clzelhbkt07j0wx01vjcgcsi9/idea",
     type: "bronze",
+    logo: "/achievements-logos/EnigmaVote-logo.svg",
   },
   {
     title: "Gardens",
@@ -44,16 +48,8 @@ export const ACHIEVEMENTS = [
       "Funding distribution platform and governance framework featuring Conviction Voting.",
     link: "https://app.buidlbox.io/projects/convictio?path=projects%2Fconvictio",
     type: "gold",
+    logo: "/achievements-logos/Gardens-logo.webp",
   },
-  //   {
-  //     title: "Finguru",
-  //     place: "1st Place",
-  //     event: "Algorand in LABitconf 2023",
-  //     track: "General Track",
-  //     description:
-  //       "AI-powered news portal transforming voice recordings into curated articles.",
-  //     type: "gold",
-  //   },
   {
     title: "Veritrust",
     place: "1st Place",
@@ -63,6 +59,7 @@ export const ACHIEVEMENTS = [
       "Blockchain platform ensuring transparency and efficiency in public tenders.",
     link: "https://taikai.network/ethargentina/hackathons/buildathon-2023/projects/clkwmn1ka00nqt401wio2a8pe/idea",
     type: "gold",
+    logo: "/achievements-logos/VeriTrust-logo.png",
   },
 ];
 

@@ -4,10 +4,10 @@ export function Footer() {
   return (
     <footer className="w-full py-6 bg-background">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="">
+        <div className="flex flex-col md:flex-row justify-end items-center">
+          {/* <div className="">
             © 2024 Luciano Scaminaci. The future is decentralized.
-          </div>
+          </div> */}
           <div className="flex space-x-4 mt-4 md:mt-0">
             <a
               href="https://github.com/lucianosc"

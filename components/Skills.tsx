@@ -224,10 +224,10 @@ const SkillBadge = ({
           className="inline-block"
         >
           <Badge
-            className="text-lg py-2 px-4 bg-background2 whitespace-nowrap cursor-pointer 
+            className="text-lg py-2 px-4 bg-background whitespace-nowrap cursor-pointer 
             scale-100 sm:scale-110 md:scale-115 lg:scale-125 
             hover:scale-125 sm:hover:scale-135 md:hover:scale-140 lg:hover:scale-150 
-            transition-all duration-300 flex items-center gap-2 hover:bg-background2 ease-in-out"
+            transition-all duration-300 flex items-center gap-2 hover:bg-background ease-in-out border border-background2"
           >
             <div
               className={`${
