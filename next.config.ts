@@ -14,9 +14,6 @@ const nextConfig: NextConfig = {
     locales: ["en"],
     defaultLocale: "en",
   },
-  experimental: {
-    optimizeCss: true,
-  },
 };
 
 export default nextConfig;
