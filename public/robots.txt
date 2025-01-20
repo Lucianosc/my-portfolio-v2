@@ -1,0 +1,21 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://your-domain.com
+
+# Sitemaps
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*.json$
+Disallow: /*_buildManifest.js$
+Disallow: /*_middlewareManifest.js$
+Disallow: /*_ssgManifest.js$
+Disallow: /*.js.map$
