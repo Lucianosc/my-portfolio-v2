@@ -1,0 +1,18 @@
+{
+  "name": "Luciano Scaminaci Portfolio",
+  "short_name": "Luciano S.",
+  "description": "Frontend Developer Portfolio showcasing projects and skills",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1d1d1d",
+  "theme_color": "#04d9ff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/Capybara.png",
+      "sizes": "500x521",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
