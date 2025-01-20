@@ -86,7 +86,7 @@ export function Achievements() {
                   </div>
                 </div>
 
-                {/* Project Logo, Title and Description Section - 4 columns */}
+                {/* Project Logo, Title and Description Section */}
                 <div className="col-span-6 flex gap-x-4">
                   <div className="flex-shrink-0 w-8 h-8 relative rounded-full overflow-hidden">
                     <Image
@@ -173,19 +173,25 @@ export function Achievements() {
                     </div>
                   </div>
                   <div className="flex flex-col gap-1 col-span-4 ml-1">
-                    <div
-                      className={`flex-shrink-0 w-8 h-8 relative rounded-full overflow-hidden ${
-                        expandedId === index && "hidden"
-                      }`}
-                    >
-                      <Image
-                        src={projectLogo}
-                        alt={`${title} logo`}
-                        height={48}
-                        width={48}
-                        className="object-contain"
-                      />
-                    </div>
+                    <AnimatePresence mode="wait">
+                      {expandedId !== index && (
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.2, ease: "easeInOut" }}
+                          className="flex-shrink-0 w-8 h-8 relative rounded-full overflow-hidden"
+                        >
+                          <Image
+                            src={projectLogo}
+                            alt={`${title} logo`}
+                            height={48}
+                            width={48}
+                            className="object-contain"
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                     <div className="flex-shrink-0">
                       <h3
                         className={`text-base font-semibold leading-7 tracking-tight ${
@@ -217,7 +223,7 @@ export function Achievements() {
                       <div className="pt-4">
                         <div className="flex justify-between">
                           <div className="flex gap-1 flex-col">
-                            <div className="flex gap-4">
+                            <div className="flex gap-2">
                               <div className="flex-shrink-0 w-8 h-8 relative rounded-full overflow-hidden">
                                 <Image
                                   src={projectLogo}
