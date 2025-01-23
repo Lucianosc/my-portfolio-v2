@@ -112,13 +112,13 @@ export const PROJECTS = [
     url: "https://growproexperience.com/",
     tags: ["E-commerce", "Next.js", "International", "Education", "UX"],
   },
-  {
-    id: "equilibra",
-    title: "Equilibra",
-    description:
-      "Web3 crowdfunding platform enabling transparent and decentralized fundraising within Ethereum network.",
-    imageUri: "/project-images/equilibra.png",
-    url: "https://equilibra-front.vercel.app/",
-    tags: ["Web3", "Crowdfunding", "DeFi", "React", "Blockchain"],
-  },
+  // {
+  //   id: "equilibra",
+  //   title: "Equilibra",
+  //   description:
+  //     "Web3 crowdfunding platform enabling transparent and decentralized fundraising within Ethereum network.",
+  //   imageUri: "/project-images/equilibra.png",
+  //   url: "https://equilibra-front.vercel.app/",
+  //   tags: ["Web3", "Crowdfunding", "DeFi", "React", "Blockchain"],
+  // },
 ];
