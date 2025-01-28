@@ -9,7 +9,6 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
-  swcMinify: true,
   i18n: {
     locales: ["en"],
     defaultLocale: "en",

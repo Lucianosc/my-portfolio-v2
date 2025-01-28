@@ -92,17 +92,6 @@ export function Contact() {
               <h2 className="text-4xl font-bold mb-8 text-white">
                 Let&apos;s talk
               </h2>
-              {submitStatus.type && (
-                <div
-                  className={`mb-4 p-4 rounded-xl ${
-                    submitStatus.type === "success"
-                      ? "bg-green-500/10 text-green-500"
-                      : "bg-red-500/10 text-red-500"
-                  }`}
-                >
-                  {submitStatus.message}
-                </div>
-              )}
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -190,7 +179,17 @@ export function Contact() {
                     </p>
                   )}
                 </div>
-
+                {submitStatus.type && (
+                  <div
+                    className={`mb-4 p-4 rounded-xl ${
+                      submitStatus.type === "success"
+                        ? "bg-green-500/10 text-green-500"
+                        : "bg-red-500/10 text-red-500"
+                    }`}
+                  >
+                    {submitStatus.message}
+                  </div>
+                )}
                 <Button
                   type="submit"
                   size="lg"

@@ -48,7 +48,7 @@ export async function POST(req: Request) {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER, // Send to yourself
       replyTo: email,
-      subject: `Portfolio Contact: ${subject}`,
+      subject: `Contact Form Submission: ${subject}`,
       text: `
         Name: ${fullName}
         Email: ${email}
@@ -59,9 +59,9 @@ export async function POST(req: Request) {
       `,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${fullName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
+        <p>${fullName}</p>
+        <p>${email}</p>
+        <p>${subject}</p>
         <br/>
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, "<br/>")}</p>
