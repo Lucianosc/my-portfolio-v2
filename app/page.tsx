@@ -160,7 +160,9 @@ export default function Home() {
               ref={ref}
               id={id}
               className={`w-full min-h-screen flex flex-col items-center justify-center ${
-                index % 2 === 0 ? "bg-background" : "bg-background2"
+                index % 2 === 0
+                  ? "bg-gradient-to-br from-background2 via-background to-background2"
+                  : "bg-gradient-to-br from-background via-background2 to-background"
               } snap-center`}
             >
               <Component />
