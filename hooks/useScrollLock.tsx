@@ -8,13 +8,6 @@ export function useScrollLock({ enabled = true }: UseScrollLockOptions = {}) {
   useEffect(() => {
     if (!enabled) return;
 
-    // Store initial overflow
-    const originalOverflow = document.body.style.overflow;
-
-    // Prevent scroll
-    document.body.style.overflow = "hidden";
-
-    // Prevent scroll events using capture phase
     const preventScroll = (e: WheelEvent | TouchEvent) => {
       e.preventDefault();
       e.stopPropagation();
@@ -32,7 +25,7 @@ export function useScrollLock({ enabled = true }: UseScrollLockOptions = {}) {
 
     // Cleanup function
     return () => {
-      document.body.style.overflow = originalOverflow;
+      // document.body.style.overflow = originalOverflow;
       window.removeEventListener("wheel", preventScroll, { capture: true });
       window.removeEventListener("touchmove", preventScroll, { capture: true });
     };
