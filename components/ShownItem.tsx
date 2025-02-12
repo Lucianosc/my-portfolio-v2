@@ -29,7 +29,6 @@ export function ShownItem({
     },
   });
 
-  // Only lock scroll when not dragging
   useScrollLock({
     enabled: !isDragging,
   });
@@ -39,7 +38,7 @@ export function ShownItem({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        exit={{ opacity: 0, transition: { duration: 0.2 } }}
         className="fixed inset-0 bg-black/80 z-10 items-center justify-center top-0 w-full flex"
         onClick={onClose}
       >
@@ -47,10 +46,13 @@ export function ShownItem({
           <motion.div
             className="relative rounded-2xl bg-background2 overflow-hidden mx-auto"
             layoutId={`card-container-${id}`}
-            layout
+            transition={{
+              duration: 0.35,
+              ease: "easeInOut",
+              layout: { duration: 0.35 },
+            }}
             {...dragProps}
             {...dragHandlers}
-            // onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={onClose}
@@ -61,7 +63,11 @@ export function ShownItem({
             <motion.div
               className="relative z-60 aspect-[2048/1230]"
               layoutId={`card-image-container-${id}`}
-              layout
+              transition={{
+                duration: 0.35,
+                ease: "easeInOut",
+                layout: { duration: 0.35 },
+              }}
             >
               <Image
                 src={imageUri}
@@ -91,8 +97,11 @@ export function ShownItem({
             </motion.div>
             <motion.div
               className="relative p-4 sm:p-8 flex flex-col gap-4 z-55 display-block"
-              animate
-              layout
+              transition={{
+                duration: 0.35,
+                ease: "easeInOut",
+                layout: { duration: 0.35 },
+              }}
             >
               <div className="flex w-full justify-between">
                 <h2 className="text-white mb-2">{title}</h2>
