@@ -84,6 +84,7 @@ export const PROJECTS = [
     imageUri: "/project-images/gardens.png",
     url: "https://www.gardens.fund/",
     tags: ["Web3", "DeFi", "DAO", "Smart Contracts", "Next.js"],
+    techsUsed: ["Next.js", "Typescript", "TailwindCss", "Viem", "Wagmi"],
   },
   {
     id: "el-eco",
@@ -93,6 +94,7 @@ export const PROJECTS = [
     imageUri: "/project-images/el-eco.png",
     url: "https://www.eleco.com.ar/",
     tags: ["Next.js", "CMS", "Media", "SEO", "Performance"],
+    techsUsed: ["Next.js", "Javascript", "Sass"],
   },
   {
     id: "artic",
@@ -102,6 +104,7 @@ export const PROJECTS = [
     imageUri: "/project-images/artic.png",
     url: "https://artic.ar/",
     tags: ["CMS", "TypeScript", "API", "Editorial", "Dashboard"],
+    techsUsed: ["React.js", "Bootstrap", "JavaScript"],
   },
   {
     id: "growpro",
@@ -111,6 +114,7 @@ export const PROJECTS = [
     imageUri: "/project-images/growpro.png",
     url: "https://growproexperience.com/",
     tags: ["E-commerce", "Next.js", "International", "Education", "UX"],
+    techsUsed: ["Next.js", "JavaScript", "Sass"],
   },
   // {
   //   id: "equilibra",
