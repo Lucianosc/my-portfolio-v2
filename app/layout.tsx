@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
+import { TSParticlesProvider } from "@/context/TSParticlesContext";
+import HeroBackground from "@/components/HeroBackground";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -25,7 +27,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <TSParticlesProvider>
+          <div className="fixed inset-0 -z-10 h-screen">
+            <HeroBackground />
+          </div>
+          {children}
+        </TSParticlesProvider>
+      </body>
     </html>
   );
 }
