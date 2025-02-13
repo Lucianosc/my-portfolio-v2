@@ -17,7 +17,7 @@ export function Projects() {
   });
   const { breakpoint } = useScreenWidth();
 
-  const containerHeight = PROJECTS.length * 50;
+  const containerHeight = PROJECTS.length * 50 * 1.5;
   return (
     <div
       ref={containerRef}
@@ -25,7 +25,6 @@ export function Projects() {
       style={{ height: breakpoint === null ? "auto" : `${containerHeight}vh` }}
     >
       <motion.div
-        ref={containerRef}
         className={`absolute border-l mx-auto h-full left-24 hidden sm:block -top-[100vh]`}
         initial={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
@@ -40,7 +39,7 @@ export function Projects() {
       ></motion.div>
       <motion.section
         ref={ref}
-        className="w-full max-w-6xl mx-auto py-4 sm:py-8 md:border border-background2 rounded-2xl overflow-hidden sm:sticky relative sm:top-[10%] md:top-[15%]"
+        className="w-full max-w-6xl mx-auto py-4 px-8 sm:py-8 md:border border-background2 rounded-2xl overflow-hidden sm:sticky relative sm:top-[10%] md:top-[15%]"
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -45,8 +45,8 @@ export function ProjectCard({ inView, index, project, onSelect }: CardProps) {
             src={imageUri || "/placeholder.svg"}
             alt={title}
             fill
+            sizes="(max-width: 640px) 95vw, (max-width: 768px) 420px, 620px"
             className="object-cover"
-            priority
           />
           <motion.div
             initial={{ opacity: 0 }}

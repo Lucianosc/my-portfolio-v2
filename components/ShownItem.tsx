@@ -73,8 +73,8 @@ export function ShownItem({
                 src={imageUri}
                 alt={title}
                 fill
+                sizes="(max-width: 820px) 100vw, 820px"
                 className="object-cover"
-                priority
                 draggable={false}
               />
               <motion.div
