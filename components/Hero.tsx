@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import { Mouse, Pointer } from "lucide-react";
+import { Pointer } from "lucide-react";
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+  // const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
 
   return (
     <section
@@ -27,14 +27,8 @@ export function Hero() {
             ease: "easeInOut",
           }}
         >
-          {isMobile ? (
-            <Pointer className="h-4 w-4" />
-          ) : (
-            <Mouse className="h-4 w-4" />
-          )}
-          <span className="font-medium">
-            {isMobile ? "Tap me" : "Click me"}
-          </span>
+          <Pointer className="h-4 w-4" />
+          <span className="font-medium">Play around</span>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: -60 }}
