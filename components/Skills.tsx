@@ -32,7 +32,7 @@ const skills = [
     url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   },
   {
-    name: "Tailwind CSS",
+    name: "Tailwind",
     logo: "/tech-logos/tailwind-logo.svg",
     url: "https://tailwindcss.com",
   },
@@ -223,26 +223,41 @@ const SkillBadge = ({
           rel="noopener noreferrer"
           className="inline-block"
         >
-          <Badge
-            className="text-lg py-2 px-4 bg-background whitespace-nowrap cursor-pointer 
-            scale-100 sm:scale-110 md:scale-115 lg:scale-125 
-            hover:scale-125 sm:hover:scale-135 md:hover:scale-140 lg:hover:scale-150 
-            transition-all duration-300 flex items-center gap-2 hover:bg-background ease-in-out border border-background2"
+          <motion.div
+            className="relative w-full"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <div
-              className={`${
-                size ? size : "w-10"
-              } w-10 h-10 relative overflow-hidden rounded-md`}
+            <motion.div
+              className="group flex items-center gap-2 transition-all duration-300 text-lg py-2 px-4 
+                scale-100 sm:scale-110 md:scale-120 lg:scale-130
+                hover:scale-110 sm:hover:scale-120 md:hover:scale-130 lg:hover:scale-140
+                relative bg-background border border-background2 p-4 rounded-full overflow-hidden"
+              whileHover="hover"
             >
-              <Image
-                src={logo}
-                alt={`${name} logo`}
-                fill
-                className="object-contain"
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-secondary/10 to-transparent"
+                initial={{ x: "-100%" }}
+                variants={{
+                  hover: { x: "-10%" },
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
-            </div>
-            {name && !size && name}
-          </Badge>
+              <div
+                className={`${
+                  size ? size : "w-10"
+                } w-10 h-10 relative overflow-hidden rounded-md`}
+              >
+                <Image
+                  src={logo}
+                  alt={`${name} logo`}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              {name && !size && name}
+            </motion.div>
+          </motion.div>
         </a>
       </motion.div>
     </motion.div>

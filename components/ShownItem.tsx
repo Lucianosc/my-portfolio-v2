@@ -115,7 +115,7 @@ export function ShownItem({
                   <ExternalLink className="h-4 w-4" />
                 </a>
               </div>
-              <p className="text-muted-foreground text-lg">{description}</p>
+              <p className="text-muted-foreground sm:text-lg text-md">{description}</p>
             </motion.div>
           </motion.div>
         </div>

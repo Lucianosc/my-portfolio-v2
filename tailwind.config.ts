@@ -57,6 +57,12 @@ export default {
           foreground: "#ffffff",
         },
       },
+      scale: {
+        "110": "1.10",
+        "120": "1.20",
+        "130": "1.30",
+        "140": "1.40",
+      },
       borderRadius: {
         lg: "0.5rem",
         md: "calc(0.5rem - 2px)",
