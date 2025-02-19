@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 import { TSParticlesProvider } from "@/context/TSParticlesContext";
@@ -33,6 +34,7 @@ export default function RootLayout({
             <HeroBackground />
           </div>
           {children}
+          <Analytics />
         </TSParticlesProvider>
       </body>
     </html>
