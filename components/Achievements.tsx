@@ -14,16 +14,24 @@ const medalColors = {
 export function Achievements() {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.1,
   });
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
-  const toggleExpand = (index: number) => {
-    setExpandedId(expandedId === index ? null : index);
+  const handleRowClick = (
+    link: string | undefined,
+    index: number,
+    isMobile: boolean
+  ) => {
+    if (isMobile) {
+      setExpandedId(expandedId === index ? null : index);
+    } else if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
   };
 
   return (
-    <div className="container p-4 w-full max-w-4xl mx-auto sm:p-8">
+    <div className="container px-0 sm:px-4 py-4 w-full max-w-4xl mx-auto sm:py-8">
       <motion.h2
         initial={{ opacity: 0, y: -40 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -31,7 +39,7 @@ export function Achievements() {
       >
         Achievements
       </motion.h2>
-      <div className="divide-y divide-background2 rounded-2xl overflow-hidden">
+      <div className="divide-y divide-background2 rounded-none sm:rounded-2xl  overflow-hidden">
         {ACHIEVEMENTS.map(
           (
             {
@@ -53,11 +61,13 @@ export function Achievements() {
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="py-4 sm:py-5 px-0 sm:px-4 transition-colors"
+              className="relative py-4 sm:py-5 px-4 transition-colors group cursor-pointer"
+              whileHover="hover"
+              onClick={() => handleRowClick(link, index, false)}
             >
               {/* Desktop View */}
               <div className="hidden sm:grid grid-cols-12 gap-4">
-                {/* Competition Logo and Details Section - 2 columns */}
+                {/* Competition Logo and Details Section - 5 columns */}
                 <div className="col-span-5 flex gap-x-4">
                   <div className="flex-shrink-0 w-12 h-12 relative rounded-full overflow-hidden mb-2 bg-white">
                     <Image
@@ -86,7 +96,7 @@ export function Achievements() {
                   </div>
                 </div>
 
-                {/* Project Logo, Title and Description Section */}
+                {/* Project Logo, Title and Description Section - 6 columns */}
                 <div className="col-span-6 flex gap-x-4">
                   <div className="flex-shrink-0 w-8 h-8 relative rounded-full overflow-hidden">
                     <Image
@@ -109,25 +119,19 @@ export function Achievements() {
 
                 {/* Link Section - 1 column */}
                 <div className="col-span-1 flex justify-end items-center">
-                  {link && (
-                    <a
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:text-primary/80 flex items-center gap-2 w-fit"
-                    >
-                      <ExternalLink className="h-5 w-5" />
-                    </a>
-                  )}
+                  {link && <ExternalLink className="h-5 w-5 text-primary" />}
                 </div>
               </div>
 
               {/* Mobile View */}
-              <div className="sm:hidden block">
-                <div
-                  className="gap-x-1 sm:gap-x-6 cursor-pointer grid grid-cols-12"
-                  onClick={() => toggleExpand(index)}
-                >
+              <div
+                className="sm:hidden block"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleRowClick(link, index, true);
+                }}
+              >
+                <div className="gap-x-1 sm:gap-x-6 cursor-pointer grid grid-cols-12">
                   <div className="flex gap-x-3 items-center min-w-0 col-span-7">
                     <div className="flex-shrink-0 w-12 h-12 relative rounded-full overflow-hidden mb-2 bg-white">
                       <Image
@@ -245,15 +249,20 @@ export function Achievements() {
                           </div>
 
                           {link && (
-                            <a
-                              href={link}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                            <div
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                window.open(
+                                  link,
+                                  "_blank",
+                                  "noopener,noreferrer"
+                                );
+                              }}
                               className="inline-flex items-center gap-2 text-primary hover:text-primary/80 flex-shrink-0"
                             >
                               <span className="text-sm">View Project</span>
                               <ExternalLink className="h-4 w-4" />
-                            </a>
+                            </div>
                           )}
                         </div>
                       </div>
@@ -261,6 +270,16 @@ export function Achievements() {
                   )}
                 </AnimatePresence>
               </div>
+
+              {/* Hover Effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-secondary/10 to-transparent z-10"
+                initial={{ x: "-100%" }}
+                variants={{
+                  hover: { x: "-10%" },
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 40 }}
+              />
             </motion.div>
           )
         )}
