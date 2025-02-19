@@ -2,7 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 import { TSParticlesProvider } from "@/context/TSParticlesContext";
-import HeroBackground from "@/components/HeroBackground";
+import HeroBackground from "@/components/backgrounds/HeroBackground";
 
 export const viewport: Viewport = {
   width: "device-width",

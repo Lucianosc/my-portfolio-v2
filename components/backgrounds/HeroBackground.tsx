@@ -1,4 +1,4 @@
-"use client"; // Required for client-side interactivity in Next.js
+"use client";
 
 import React from "react";
 import Particles from "@tsparticles/react";
